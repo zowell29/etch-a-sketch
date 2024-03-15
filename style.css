@@ -1,0 +1,22 @@
+.body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    max-width: 606px;
+    max-height: 606px;
+    
+}
+.div-matrix-element{
+    flex-wrap: wrap;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgb(114, 114, 209);
+    border-radius: 10px;
+    
+}
