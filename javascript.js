@@ -51,7 +51,7 @@ function createMatrix() {
 }
 
 function deleteOldMatrix() {
-    console.log(divMatrixElements);
+    // console.log(divMatrixElements);
     divMatrixElements.forEach((divMatrixElement) => {
         contentContainer.removeChild(divMatrixElement)  
     });
