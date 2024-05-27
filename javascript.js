@@ -1,17 +1,39 @@
 const contentContainer = document.querySelector('.content-container');
+
+const buttonRandomColor = document.querySelector('.button-random-color');
+const buttonSpecificColor = document.querySelector('.button-specific-color');
+// const buttonGradientColor = document.querySelector('.button-gradient-color');
+
 contentContainer.style.width = '600px'
 contentContainer.style.height = '600px'
 
+let mode = 'specific';
+let randomNumber = Math.floor(Math.random()*16777215).toString(16);
+let randomColor = "#" + randomNumber;
 let divMatrixElements = [];
 let numberOfSqaresPerSide = 16; //default value
+
 const buttonAsk = document.querySelector('.button-ask');
 
 buildMatrix(); //default matrix
+
+buttonRandomColor.addEventListener('click', () =>{
+    mode = 'random';
+});
+buttonSpecificColor.addEventListener('click', () =>{
+    mode = 'specific';
+});
+
+// buttonGradientColor.addEventListener('click', () =>{
+//     mode = "gradient";
+// });
 
 function buildMatrix(){
     createMatrix();
     divMatrixElements = document.querySelectorAll('.div-matrix-element');
     addListenerOnHover();
+    // if hoverEnable == TRUE => addListenerOnHover()
+    // if clickEnable == TRUE => addListenerOnClick()
 }
 
 buttonAsk.addEventListener('click', () => {
@@ -26,7 +48,7 @@ function getNumberFromPrompt() {
     let answear = prompt("Please write here the number of sqares per side", "");
     let number = Number(answear);
     if (isNaN(number)){
-        alert("Please write a number")
+        alert("Please write only a number")
         return numberOfSqaresPerSide;
     }
     if (!Number.isInteger(number)) {
@@ -65,14 +87,32 @@ function deleteOldMatrix() {
     });
 }
 
+// function generateRandomColor(){
+    
+// }
+
 function addListenerOnHover() {
     divMatrixElements.forEach((divMatrixElement) => {
         divMatrixElement.addEventListener('mouseover', () => {
-            let randomNumber = Math.floor(Math.random()*16777215).toString(16);
-            let randomColor = "#" + randomNumber;
-            // console.log(randomColor);
-            divMatrixElement.style.backgroundColor = randomColor;
+            if (mode === "random") {
+                randomNumber = Math.floor(Math.random()*16777215).toString(16);
+                randomColor = "#" + randomNumber;
+                // console.log(randomColor);
+                divMatrixElement.style.backgroundColor = randomColor;
+            }
+            if (mode === "specific"){ 
+                divMatrixElement.style.backgroundColor = randomColor;
+            }            
+            
         })  
     });
 }
 
+//TODO: modes
+// [NOT STARTED] click mode: click on each button so the color will change
+// [DONE] hover mode: hover on each button so the color will change 
+// [DONE] random color 
+// [NOT STARTED] pick a color
+// [NOT STARTED] gradient
+
+// });
