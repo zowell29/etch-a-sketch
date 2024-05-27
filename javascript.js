@@ -25,6 +25,14 @@ buttonAsk.addEventListener('click', () => {
 function getNumberFromPrompt() {
     let answear = prompt("Please write here the number of sqares per side", "");
     let number = Number(answear);
+    if (isNaN(number)){
+        alert("Please write a number")
+        return numberOfSqaresPerSide;
+    }
+    if (!Number.isInteger(number)) {
+        alert("Please write an integer number")
+        return numberOfSqaresPerSide;
+    }
     if (number > 100) {
         alert("Please write a number smaller than 100")
         return numberOfSqaresPerSide;
